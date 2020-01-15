@@ -1,0 +1,10 @@
+******** Save private content using aws cloudfront********
+
+Required keys for cloudfront
+1. cloudfront key pairs
+   private key public key public access key
+
+set up cloudfront with s3 by creating new distribution
+
+Default Cache Behavior Settings is to set Restrict Viewer Access to “Yes”. This will allow 
+us to make requests using Signed URLs or Signed Cookies.

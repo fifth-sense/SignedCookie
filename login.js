@@ -25,7 +25,7 @@ app.get('/', function (request, response) {
     response.sendFile(path.join(__dirname + '/login.html'));
 });
 //Get Signed Cookie route
-app.get('/getSignedCookie', cookieSigner.getSignedCookie);
+// app.get('/getSignedCookie', cookieSigner.getSignedCookie);
 
 //home route
 app.get('/home', function (request, response) {
@@ -44,10 +44,10 @@ app.post('/auth', function (request, response) {
         console.log(username);
         request.session.loggedin = true;
         request.session.username = username;
-        var userdata;
+      
 
-        response.cookie("userdata", app.get('/getSignedCookie', cookieSigner.getSignedCookie));
-        response.redirect('/home');
+        // response.cookie("userdata", app.get('/getSignedCookie', cookieSigner.getSignedCookie));
+        // response.redirect('/home');
     }
     else {
         response.send('Incoreect credential');
@@ -55,6 +55,11 @@ app.post('/auth', function (request, response) {
 
     response.end();
 });
+app.get('/getSignedCookie',function(request,response){
+    console.log(cookieSigner.getSignedCookie);
+    // response.send(cookieSigner.getSignedCookie)
+
+})
 app.get('/home', function (request, response) {
     if (request.session.loggedin) {
         response.send('welcome back ' + request.session.username);
